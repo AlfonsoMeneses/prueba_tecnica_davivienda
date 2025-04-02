@@ -12,7 +12,6 @@ import { BussinesException } from "../domain/exceptions/bussines.exception";
 import {RolesEnum} from '../domain/enums/role.enum';
 
 //Adapters
-import { JwtAdapter } from "../adapters/jwt_adapter";
 import { EncryptionAdapter } from "../adapters/encryption.adapter";
 
 
@@ -26,7 +25,7 @@ import { envs } from "../config/envs";
 export class AuthServiceImpl implements AuthService {
   
   //JWT Adapter
-  private jwtAdapter = JwtAdapter;
+  
 
   private authRepository: AuthRepository = new AuthRepository();
   private roleRepository: RoleRepository = new RoleRepository();

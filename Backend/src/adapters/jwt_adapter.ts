@@ -6,8 +6,8 @@ export class JwtAdapter {
     constructor(private readonly secret: string) {}
 
     //Generar token
-    sign(payload: any, duration: number = 3600): string {
-        return jwt.sign(payload, this.secret, {expiresIn:duration});
+    sign(payload: any): string {
+        return jwt.sign(payload, this.secret);
     }
 
     //Validación del token
@@ -17,18 +17,7 @@ export class JwtAdapter {
 
     //Obtener data del token
     get(token:string):any{
-
         //Obteniendo la data del token
-        const value = this.verify(token);
-
-        //Validación de la data
-        const tokenInfo = typeof value === 'string' ? JSON.parse(value) : value;
-
-        if (!tokenInfo.data) {
-            throw "Token invalid";
-        }
-
-        //Devolviendo el valor que fue encriptado
-        return tokenInfo.data;     
+        return  this.verify(token);
     }
 }

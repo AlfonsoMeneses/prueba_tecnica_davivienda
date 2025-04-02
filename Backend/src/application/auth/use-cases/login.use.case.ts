@@ -9,10 +9,11 @@ import { envs } from "../../../config/envs";
 import { RoleDto } from "../../roles/dtos/role.dto";
 
 import { JwtAdapter } from "../../../adapters/jwt_adapter";
+import { adapterDependencies } from "../../../dependency-injection/adapters.dependency";
 
 export class LoginUseCase {
     
-    private jwtAdapter: JwtAdapter = new JwtAdapter(envs.JWT_SEED);
+    private jwtAdapter: JwtAdapter = adapterDependencies.JwtAdapter;
 
     constructor(private authService: AuthService) {}
   
@@ -30,11 +31,9 @@ export class LoginUseCase {
         email: user.email,
         user_role: user.role.code
       };
-
-      console.log("Payload", payload);
       
       //Generando Token
-      const jwt = this.jwtAdapter.sign(payload, envs.JWT_LOGIN_DURATION);
+      const jwt = this.jwtAdapter.sign(payload);
 
       //Generando Data de respuesta
       const resp:UserLoginDto = {
