@@ -2,7 +2,7 @@
 import "reflect-metadata"
 
 import { envs } from './config/envs';
-//import { DataConnection } from './infrastructure/data-conection';
+import { DataConnection } from './infrastructure/data-conection';
 
 import { Server } from './presentation/server';
 
@@ -15,7 +15,7 @@ import { Server } from './presentation/server';
 async function main(){
   
   // Inicializa la conexión a la base de datos
-  /*DataConnection.start()
+  DataConnection.start()
   .then(() => {
 
     //
@@ -30,12 +30,7 @@ async function main(){
 
   })
   .catch((error) => console.error("❌ Error connecting to the database:", error));
-    */
+    
 
-  // Inicializa el servidor
-  const server = new Server({
-    port: envs.PORT
-  });
-
-  server.start();
+ 
 }
