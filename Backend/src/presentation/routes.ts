@@ -2,7 +2,7 @@
 import { Router } from 'express';
 
 //Rutas
-//import { AuthRoutes } from './controllers/auth/routes';
+import { AuthRoutes } from './controllers/auth/routes';
 //import { UserRoutes } from './controllers/user/routes';
 
 
@@ -15,7 +15,7 @@ export class AppRoutes {
         // Definir las rutas
 
         //Auth
-        //router.use('/auth',AuthRoutes.routes);
+        router.use('/auth',AuthRoutes.routes);
 
         //Users
         //router.use('/users', UserRoutes.routes);

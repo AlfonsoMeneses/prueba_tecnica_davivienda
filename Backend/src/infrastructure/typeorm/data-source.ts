@@ -1,11 +1,11 @@
 import { DataSource } from "typeorm";
 import {databaseConfig} from "../../config/database.config";
 
-//import {entities} from "./models/index";
+import {entities} from "./models/index";
 
 
 export const AppDataSource = new DataSource({
-    type: 'postgres', // 👈 Usa la variable de entorno TYPE
+    type: 'postgres', 
     host: databaseConfig.HOST,
     port: databaseConfig.PORT,
     username: databaseConfig.USER_NAME ,
@@ -13,6 +13,5 @@ export const AppDataSource = new DataSource({
     database: databaseConfig.DATABASE,
     synchronize: false,
     logging: ['error','warn'],
-    entities: [], // 👈 Agrega todas tus entidades aquí
-
+    entities: entities, 
   });
